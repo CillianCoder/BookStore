@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import Spinner from "../components/Spinner";
 import { Link } from "react-router-dom";
@@ -16,6 +16,7 @@ const Home = () => {
       .get("http://localhost:5555/books")
       .then((res) => {
         setBooks(res.data);
+        console.log("home data :", res.data);
         setLoading(false);
       })
       .catch((err) => {
@@ -66,13 +67,13 @@ const Home = () => {
                 </td>
                 <td className="border border-slate-700 rounded-md text-center max-md:hidden">
                   <div className="flex justify-center gap-x-4">
-                    <Link to={`/books/${book._id}`}>
+                    <Link to={`/books/details/${book._id}`}>
                       <BsInfoCircle className="text-2xl text-green-800" />
                     </Link>
-                    <Link to={`/books/${book._id}/edit`}>
+                    <Link to={`/books/edit/${book._id}`}>
                       <AiOutlineEdit className="text-2xl text-yellow-600" />
                     </Link>
-                    <Link to={`/books/${book._id}/delete`}>
+                    <Link to={`/books/delete/${book._id}`}>
                       <MdOutlineDelete className="text-2xl text-red-600" />
                     </Link>
                   </div>
