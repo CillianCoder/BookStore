@@ -16,7 +16,6 @@ const Home = () => {
       .get("http://localhost:5555/books")
       .then((res) => {
         setBooks(res.data);
-        console.log("home data :", res.data);
         setLoading(false);
       })
       .catch((err) => {
